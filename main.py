@@ -9,7 +9,7 @@ X = 1  # IA
 env = gym.make("TicTacToe-v1", symbols=[X, O])
 env.reset()
 
-def vitoria(last_state, jogador):
+def combinacoesVitoria(last_state, jogador):
     win_state = [
         [last_state[0], last_state[1], last_state[2]],
         [last_state[3], last_state[4], last_state[5]],
@@ -27,13 +27,13 @@ def vitoria(last_state, jogador):
         return False
 
 def fim(last_state):
-    return vitoria(last_state, O) or vitoria(last_state, X)
+    return combinacoesVitoria(last_state, O) or combinacoesVitoria(last_state, X)
 
 def pontos(last_state):
     
-    if vitoria(last_state, X):
+    if combinacoesVitoria(last_state, X):
         ponto = +1
-    elif vitoria(last_state, O):
+    elif combinacoesVitoria(last_state, O):
         ponto = -1
     else:
         ponto = 0
